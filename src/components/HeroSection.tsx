@@ -59,7 +59,7 @@ const HeroSection: React.FC = () => {
       </motion.div>
       <motion.div variants={itemVariants} className=" justify-self-center">
         <Image
-          src={"/asset1.jpg"}
+          src={"/asset1.png"}
           width={600}
           height={600}
           alt="asset"

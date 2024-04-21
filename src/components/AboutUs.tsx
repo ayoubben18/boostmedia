@@ -2,7 +2,10 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="container flex flex-col px-8 py-12 min-h-[40vh] gap-2 justify-center items-center text-center text-white">
+    <div
+      className="container flex flex-col px-8 py-12 min-h-[40vh] gap-2 justify-center items-center text-center text-white"
+      id="about"
+    >
       <h1 className="text-center text-sm text-slate-200">About Us</h1>
       <h1 className=" text-3xl xs:text-4xl sm:text-5xl font-bold">
         About Our Agency

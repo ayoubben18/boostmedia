@@ -20,8 +20,8 @@ export default function ContactUs() {
           </p>
         </div>
       </div>
-      <div className="flex flex-1 items-center card w-full shadow-xl bg-base-100 justify-centersm:p-12 md:p-16 lg:p-20">
-        <form className="w-full max-w-md space-y-6  card-body">
+      <div className="flex flex-1 items-center card w-full shadow-xl bg-orange-50 justify-centersm:p-12 md:p-16 lg:p-20">
+        <form className="w-full max-w-md space-y-6 card-body">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
             <div className="space-y-2">
               <label

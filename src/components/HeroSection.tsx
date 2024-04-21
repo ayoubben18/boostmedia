@@ -46,7 +46,7 @@ const HeroSection: React.FC = () => {
         </p>
 
         <div className=" flex gap-2 justify-center lg:justify-start">
-          <SmoothScrollLink href="#contact" className="btn  btn-secondary ">
+          <SmoothScrollLink href="#contact" className="btn btn-secondary ">
             Get Started
           </SmoothScrollLink>
           <SmoothScrollLink

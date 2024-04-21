@@ -15,8 +15,8 @@ const WhyBM = () => {
           succeed. Here are a few reasons why you should choose us.
         </p>
       </div>
-      <ul className="steps steps-vertical sm:steps-horizontal">
-        <li className="step step-secondary ">We Know Our Stuff</li>
+      <ul className="steps steps-vertical text-start sm:steps-horizontal sm:text-center">
+        <li className="step step-secondary">We Know Our Stuff</li>
         <li className="step step-secondary ">Local Heroes</li>
         <li className="step step-secondary">All About You</li>
         <li className="step step-secondary">Keep It Simple</li>

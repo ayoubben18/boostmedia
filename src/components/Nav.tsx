@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { SmoothScrollLink } from "@/utils/SmothScrollLink";
 
 const Nav = () => {
   return (
@@ -28,13 +29,13 @@ const Nav = () => {
           className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li>
-            <a>What we do</a>
+            <SmoothScrollLink href="#about">About</SmoothScrollLink>
           </li>
           <li>
-            <a>Contact us</a>
+            <SmoothScrollLink href="#contact">Contact us</SmoothScrollLink>
           </li>
           <li>
-            <a>Blog</a>
+            <SmoothScrollLink href="#services">Services</SmoothScrollLink>
           </li>
         </ul>
       </div>
@@ -44,15 +45,15 @@ const Nav = () => {
         </a>
       </div>
       <div className=" flex gap-2">
-        <Link href={"mailto:phoenixriseteam@gmail.com"}>
+        <Link href={"mailto:boostmedia@gmail.com"}>
           <MailIcon />
         </Link>
-        <Link
+        {/* <Link
           target="_blank"
           href={"https://www.linkedin.com/company/phoenixriseteam"}
         >
           <LinkedinIcon />
-        </Link>
+        </Link> */}
         <Link
           target="_blank"
           href={"https://www.instagram.com/boostmedia1.ma/"}
@@ -66,7 +67,7 @@ const Nav = () => {
 
 export default Nav;
 
-function InstagramIcon(props: any) {
+export function InstagramIcon(props: any) {
   return (
     <svg
       {...props}

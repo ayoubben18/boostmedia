@@ -4,7 +4,6 @@ import GetInTouch from "@/components/GetInTouch";
 import HeroSection from "@/components/HeroSection";
 import Services from "@/components/Services";
 import WhyBM from "@/components/WhyBM";
-import Image from "next/image";
 
 export default function Home() {
   return (

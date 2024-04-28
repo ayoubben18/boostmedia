@@ -1,27 +1,27 @@
-import AboutUs from "@/components/AboutUs";
-import ContactUs from "@/components/ContactUS";
-import GetInTouch from "@/components/GetInTouch";
+import BentoBox from "@/components/BentoBox";
+import BoostPresence from "@/components/BoostPresence";
+import ContactForm from "@/components/ContactForm";
+import ContactUs from "@/components/ContactUs";
 import HeroSection from "@/components/HeroSection";
-import Services from "@/components/Services";
-import WhyBM from "@/components/WhyBM";
+import OurTeam from "@/components/OurTeam";
+import Recomendation from "@/components/Recomendation";
+import UnderHeroSection from "@/components/UnderHeroSection";
 
 export default function Home() {
   return (
-    <main className="flex mx-auto min-h-screen flex-col items-center justify-between">
+    <main className="flex min-h-screen flex-col gap-10 items-center justify-between ">
       <HeroSection />
-      <div className=" bg-[#FFCC75] w-full flex justify-center items-center">
-        <AboutUs />
+      <div className=" w-full  bg-gray-100">
+        <UnderHeroSection />
       </div>
-      <div className="w-full">
-        <Services />
+      <BoostPresence />
+      <BentoBox />
+      <OurTeam />
+      <div className="bg-gray-100 w-full">
+        <Recomendation />
       </div>
-      <WhyBM />
-      <div className="bg-white w-full">
-        <ContactUs />
-      </div>
-      <div className=" bg-[#FFCC75] w-full flex justify-center items-center">
-        <GetInTouch />
-      </div>
+      <ContactUs />
+      <ContactForm />
     </main>
   );
 }

@@ -1,7 +1,7 @@
 import BentoBox from "@/components/BentoBox";
 import BoostPresence from "@/components/BoostPresence";
 import ContactForm from "@/components/ContactForm";
-import ContactUs from "@/components/ContactUs";
+import Credentials from "@/components/Credentials";
 import HeroSection from "@/components/HeroSection";
 import OurTeam from "@/components/OurTeam";
 import Recomendation from "@/components/Recomendation";
@@ -20,7 +20,7 @@ export default function Home() {
       <div className="bg-gray-100 w-full">
         <Recomendation />
       </div>
-      <ContactUs />
+      <Credentials />
       <ContactForm />
     </main>
   );

@@ -1,11 +1,11 @@
-import BentoBox from "@/components/BentoBox";
-import BoostPresence from "@/components/BoostPresence";
-import ContactForm from "@/components/ContactForm";
-import ContactUs from "@/components/ContactUs";
-import HeroSection from "@/components/HeroSection";
-import OurTeam from "@/components/OurTeam";
-import Recomendation from "@/components/Recomendation";
-import UnderHeroSection from "@/components/UnderHeroSection";
+import BentoBox from "../components/BentoBox";
+import BoostPresence from "../components/BoostPresence";
+import ContactForm from "../components/ContactForm";
+import ContactUs from "../components/ContactUs";
+import HeroSection from "../components/HeroSection";
+import OurTeam from "../components/OurTeam";
+import Recomendation from "../components/Recomendation";
+import UnderHeroSection from "../components/UnderHeroSection";
 
 export default function Home() {
   return (

@@ -15,7 +15,7 @@ type Inputs = {
   message: string;
 };
 
-export default function Component() {
+export default function ContactForm() {
   const {
     register,
     handleSubmit,

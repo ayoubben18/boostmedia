@@ -5,7 +5,7 @@ import Image from "next/image";
  * @see https://v0.dev/t/Etgac2tWynV
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
-export default function Component() {
+export default function BentoBox() {
   return (
     <div className="flex justify-center py-10" id="innovation">
       <div className="grid grid-cols-1 md:grid-cols-2 max-w-6xl items-center">

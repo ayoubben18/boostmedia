@@ -6,7 +6,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function Component() {
+export default function BoostPresence() {
   return (
     <div className=" py-16 text-center" id="services">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

@@ -6,7 +6,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-export default function Component() {
+export default function UnderHeroSection() {
   return (
     <div className="max-w-6xl mx-auto p-8" id="about">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -6,7 +6,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Component() {
+export default function ContactUs() {
   return (
     <div className="max-w-4xl mx-auto py-12 px-6">
       <h1 className="text-5xl font-bold mb-4 text-center md:text-start">

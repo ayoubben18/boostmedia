@@ -5,7 +5,7 @@
  */
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
 
-export default function Component() {
+export default function Recomendation() {
   return (
     <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg my-20">
       <div className="flex justify-center mb-4">

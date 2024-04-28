@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
-export default function Component() {
+export default function Nav() {
   return (
     <header className="bg-white py-4 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">

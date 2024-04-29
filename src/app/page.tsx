@@ -15,7 +15,9 @@ export default function Home() {
         <UnderHeroSection />
       </div>
       <BoostPresence />
-      <BentoBox />
+      <div className=" w-full  bg-gray-100">
+        <BentoBox />
+      </div>
       <OurTeam />
       <div className="bg-gray-100 w-full">
         <Recomendation />

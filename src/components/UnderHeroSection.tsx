@@ -1,17 +1,43 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/gzorhrS4ZEM
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
+"use client";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function UnderHeroSection() {
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: (index: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 50,
+        damping: 10,
+        delay: index * 0.2,
+      },
+    }),
+  };
+
   return (
-    <div className="max-w-6xl mx-auto p-8" id="about">
+    <motion.div
+      className="max-w-6xl mx-auto p-8"
+      id="about"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      variants={{
+        visible: {
+          transition: { staggerChildren: 0.1 },
+        },
+      }}
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="hidden md:flex justify-center items-center">
-          <div className=" w-full h-64 flex justify-center items-center">
+        <motion.div
+          className="hidden md:flex justify-center items-center"
+          custom={0}
+          variants={itemVariants}
+        >
+          <div className="w-full h-64 flex justify-center items-center">
             <Image
               alt="Placeholder"
               className="max-h-96 max-w-full"
@@ -25,12 +51,16 @@ export default function UnderHeroSection() {
               priority
             />
           </div>
-        </div>
-        <div>
-          <h1 className="text-5xl font-bold mb-4">
+        </motion.div>
+        <motion.div custom={1} variants={itemVariants}>
+          <motion.h1
+            className="text-5xl font-bold mb-4"
+            custom={2}
+            variants={itemVariants}
+          >
             Unlock Your Business's Full Potential with BoostMedia
-          </h1>
-          <p className="mb-6">
+          </motion.h1>
+          <motion.p className="mb-6" custom={3} variants={itemVariants}>
             We're BoostMedia, right here in Morocco. Think of us as your
             friendly neighborhood team that helps your business get noticed
             online. Everyone's online these days, and we make sure they find
@@ -38,8 +68,12 @@ export default function UnderHeroSection() {
             your brand. We're all about getting your message out there so you
             can grow. Simple websites, cool social media posts, and videos that
             show off what you do - that's what we're good at.
-          </p>
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          </motion.p>
+          <motion.div
+            className="grid grid-cols-2 gap-4 mb-6"
+            custom={4}
+            variants={itemVariants}
+          >
             <div>
               <TrendingUpIcon className="h-6 w-6 mb-2" />
               <h2 className="font-semibold mb-2">Increase Sales</h2>
@@ -66,10 +100,14 @@ export default function UnderHeroSection() {
                 </Button>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="flex md:hidden justify-center items-center">
-          <div className=" w-full h-64 flex justify-center items-center">
+          </motion.div>
+        </motion.div>
+        <motion.div
+          className="flex md:hidden justify-center items-center"
+          custom={5}
+          variants={itemVariants}
+        >
+          <div className="w-full h-64 flex justify-center items-center">
             <Image
               alt="Placeholder"
               className="max-h-96 max-w-full"
@@ -83,9 +121,9 @@ export default function UnderHeroSection() {
               priority
             />
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

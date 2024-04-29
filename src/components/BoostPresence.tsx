@@ -1,34 +1,76 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/u9xMxPQA8pM
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
+"use client";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function BoostPresence() {
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: (index: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 50,
+        damping: 10,
+        delay: index * 0.2,
+      },
+    }),
+  };
+
   return (
-    <div className=" py-16 text-center" id="services">
+    <motion.div
+      className="py-16 text-center"
+      id="services"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.6 }}
+      variants={{
+        visible: {
+          transition: { staggerChildren: 0.1 },
+        },
+      }}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <section className="text-center">
-          <h2 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">
+        <motion.section
+          className="text-center"
+          variants={itemVariants}
+          custom={0}
+        >
+          <motion.h2
+            className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl"
+            variants={itemVariants}
+            custom={1}
+          >
             Unlock Your Business Potential with BoostMedia
-          </h2>
-          <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+          </motion.h2>
+          <motion.p
+            className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto"
+            variants={itemVariants}
+            custom={2}
+          >
             BoostMedia offers a range of additional features and services to
             help your business thrive. From social media management to website
             design, we have you covered.
-          </p>
-          <div className="mt-10 flex justify-center gap-4">
+          </motion.p>
+          <motion.div
+            className="mt-10 flex justify-center gap-4"
+            variants={itemVariants}
+            custom={3}
+          >
             <Button variant="default">
               <Link href="#innovation">Learn More</Link>
             </Button>
             <Button variant="secondary">
               <Link href="#form">Sign Up</Link>
             </Button>
-          </div>
-        </section>
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          </motion.div>
+        </motion.section>
+        <motion.div
+          className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
+          variants={itemVariants}
+          custom={4}
+        >
           <div>
             <LineChartIcon className="mx-auto h-10 w-10 text-gray-900" />
             <h3 className="mt-6 text-lg font-medium leading-6 text-gray-900">
@@ -69,9 +111,9 @@ export default function BoostPresence() {
               driving organic traffic to your business.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

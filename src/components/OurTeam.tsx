@@ -1,155 +1,124 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/rnjJ0GTfrfb
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
+"use client";
+import { motion } from "framer-motion";
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
 
 export default function OurTeam() {
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: (index: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 50,
+        damping: 10,
+        delay: index * 0.2,
+      },
+    }),
+  };
+
   return (
-    <div
+    <motion.div
       className="bg-white py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24"
       id="team"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      variants={{
+        visible: {
+          transition: { staggerChildren: 0.1 },
+        },
+      }}
     >
       <div className="relative max-w-xl mx-auto">
-        <svg
-          aria-hidden="true"
-          className="absolute left-full transform translate-x-1/2"
-          fill="none"
-          height="404"
-          viewBox="0 0 404 404"
-          width="404"
-        >
-          <defs>
-            <pattern
-              height="20"
-              id="85737c0e-0916-41d7-917f-596dc7edfa27"
-              patternUnits="userSpaceOnUse"
-              width="20"
-              x="0"
-              y="0"
-            >
-              <rect
-                className="text-gray-200"
-                fill="currentColor"
-                height="4"
-                width="4"
-                x="0"
-                y="0"
-              />
-            </pattern>
-          </defs>
-          <rect
-            fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)"
-            height="404"
-            width="404"
-          />
-        </svg>
-        <svg
-          aria-hidden="true"
-          className="absolute right-full bottom-0 transform -translate-x-1/2"
-          fill="none"
-          height="404"
-          viewBox="0 0 404 404"
-          width="404"
-        >
-          <defs>
-            <pattern
-              height="20"
-              id="85737c0e-0916-41d7-917f-596dc7edfa27"
-              patternUnits="userSpaceOnUse"
-              width="20"
-              x="0"
-              y="0"
-            >
-              <rect
-                className="text-gray-200"
-                fill="currentColor"
-                height="4"
-                width="4"
-                x="0"
-                y="0"
-              />
-            </pattern>
-          </defs>
-          <rect
-            fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)"
-            height="404"
-            width="404"
-          />
-        </svg>
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          <motion.h2
+            className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+            variants={itemVariants}
+            custom={0}
+          >
             Our team
-          </h2>
-          <p className="mt-4 text-lg leading-6 text-gray-500">
+          </motion.h2>
+          <motion.p
+            className="mt-4 text-lg leading-6 text-gray-500"
+            variants={itemVariants}
+            custom={1}
+          >
             Meat our team behind the scenes
-          </p>
+          </motion.p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
-          <div className="pt-6">
-            <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
-              <div className="-mt-6">
-                <div>
-                  <span className="inline-flex items-center justify-center p-3 bg-gray-500 rounded-md shadow-lg">
-                    <Avatar>
-                      <AvatarImage
-                        alt="Team member"
-                        src="/placeholder.svg?height=40&width=40"
-                      />
-                      <AvatarFallback>PH</AvatarFallback>
-                    </Avatar>
-                  </span>
-                </div>
-                <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">
-                  Ayoub Bensalah
-                </h3>
-                <p className="mt-5 text-base text-gray-500">Job title</p>
-                <p className="mt-5 text-base text-gray-500">
-                  Technical Stuff, design coding{" "}
-                </p>
-                <div className="flex gap-2 mt-2">
-                  <LinkedinIcon className="h-6 w-6 text-gray-400" />
-                  <TwitterIcon className="h-6 w-6 text-gray-400" />
-                  <GithubIcon className="h-6 w-6 text-gray-400" />
+        <motion.div
+          className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2"
+          variants={itemVariants}
+          custom={2}
+        >
+          {teamMembers.map((member, index) => (
+            <motion.div
+              className="pt-6"
+              custom={index + 3}
+              variants={itemVariants}
+            >
+              <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
+                <div className="-mt-6">
+                  <div>
+                    <span className="inline-flex items-center justify-center p-3 bg-gray-500 rounded-md shadow-lg">
+                      <Avatar>
+                        <AvatarImage alt={member.name} src={member.image} />
+                        <AvatarFallback>{member.fallback}</AvatarFallback>
+                      </Avatar>
+                    </span>
+                  </div>
+                  <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">
+                    {member.name}
+                  </h3>
+                  <p className="mt-5 text-base text-gray-500">
+                    {member.jobTitle}
+                  </p>
+                  <p className="mt-5 text-base text-gray-500">
+                    {member.description}
+                  </p>
+                  <div className="flex gap-2 mt-2">
+                    {member.socialLinks.map((link) => (
+                      <link.Icon className="h-6 w-6 text-gray-400" />
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="pt-6">
-            <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8">
-              <div className="-mt-6">
-                <div>
-                  <span className="inline-flex items-center justify-center p-3 bg-gray-500 rounded-md shadow-lg">
-                    <Avatar>
-                      <AvatarImage
-                        alt="Team member"
-                        src="/placeholder.svg?height=40&width=40"
-                      />
-                      <AvatarFallback>PH</AvatarFallback>
-                    </Avatar>
-                  </span>
-                </div>
-                <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">
-                  Yasser Elhaddad
-                </h3>
-                <p className="mt-5 text-base text-gray-500">Job title</p>
-                <p className="mt-5 text-base text-gray-500">
-                  Soft Skills and communication
-                </p>
-                <div className="flex gap-2 mt-2">
-                  <LinkedinIcon className="h-6 w-6 text-gray-400" />
-                  <TwitterIcon className="h-6 w-6 text-gray-400" />
-                  <GithubIcon className="h-6 w-6 text-gray-400" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
+
+const teamMembers = [
+  // Example team member
+  {
+    name: "Ayoub Bensalah",
+    image: "/placeholder.svg?height=40&width=40",
+    fallback: "AB",
+    jobTitle: "Technical Stuff, design coding",
+    description: "More details about Ayoub",
+    socialLinks: [
+      { Icon: LinkedinIcon },
+      { Icon: TwitterIcon },
+      { Icon: GithubIcon },
+    ],
+  },
+  {
+    name: "Yasser Elhadad",
+    image: "/placeholder.svg?height=40&width=40",
+    fallback: "YE",
+    jobTitle: "Soft Skills and communication",
+    description: "More details about Yasser",
+    socialLinks: [
+      { Icon: LinkedinIcon },
+      { Icon: TwitterIcon },
+      { Icon: GithubIcon },
+    ],
+  },
+];
 
 function GithubIcon(props: any) {
   return (

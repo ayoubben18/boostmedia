@@ -1,18 +1,56 @@
+"use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Credentials() {
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: (index: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 50,
+        damping: 10,
+        delay: index * 0.2,
+      },
+    }),
+  };
+
   return (
-    <div className="max-w-4xl mx-auto py-12 px-6">
-      <h1 className="text-5xl font-bold mb-4 text-center md:text-start">
+    <motion.div
+      className="max-w-4xl mx-auto py-12 px-6"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      variants={{
+        visible: {
+          transition: { staggerChildren: 0.1 },
+        },
+      }}
+    >
+      <motion.h1
+        className="text-5xl font-bold mb-4 text-center md:text-start"
+        variants={itemVariants}
+        custom={0}
+      >
         Contact BoostMedia
-      </h1>
-      <p className="text-lg mb-12 text-center md:text-start">
+      </motion.h1>
+      <motion.p
+        className="text-lg mb-12 text-center md:text-start"
+        variants={itemVariants}
+        custom={1}
+      >
         Get in touch with us to learn more about our services.
-      </p>
+      </motion.p>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
         <div>
-          <div className="flex items-start space-x-4 mb-6">
+          <motion.div
+            className="flex items-start space-x-4 mb-6"
+            variants={itemVariants}
+            custom={2}
+          >
             <MailboxIcon className="h-6 w-6 text-gray-700" />
             <div>
               <h2 className="text-xl font-semibold">Email</h2>
@@ -24,8 +62,12 @@ export default function Credentials() {
                 contact@boostmedia.ma
               </Link>
             </div>
-          </div>
-          <div className="flex items-start space-x-4 mb-6">
+          </motion.div>
+          <motion.div
+            className="flex items-start space-x-4 mb-6"
+            variants={itemVariants}
+            custom={3}
+          >
             <PhoneIcon className="h-6 w-6 text-gray-700" />
             <div>
               <h2 className="text-xl font-semibold">Phone</h2>
@@ -34,8 +76,12 @@ export default function Credentials() {
                 0625950284
               </Link>
             </div>
-          </div>
-          <div className="flex items-start space-x-4">
+          </motion.div>
+          <motion.div
+            className="flex items-start space-x-4"
+            variants={itemVariants}
+            custom={4}
+          >
             <LocateIcon className="h-6 w-6 text-gray-700" />
             <div>
               <h2 className="text-xl font-semibold">Office</h2>
@@ -44,21 +90,26 @@ export default function Credentials() {
                 Get Directions
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
-        <Image
-          alt="Map placeholder"
+        <motion.div
           className="h-full w-full object-cover"
-          height="300"
-          src="/contact.png"
-          style={{
-            aspectRatio: "300/300",
-            objectFit: "cover",
-          }}
-          width="300"
-        />
+          variants={itemVariants}
+          custom={5}
+        >
+          <Image
+            alt="Map placeholder"
+            height="300"
+            src="/contact.png"
+            style={{
+              aspectRatio: "300/300",
+              objectFit: "cover",
+            }}
+            width="300"
+          />
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

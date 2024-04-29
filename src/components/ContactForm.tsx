@@ -1,12 +1,13 @@
 "use client";
+import { motion } from "framer-motion";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { useToast } from "./ui/use-toast";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { SubmitHandler, useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
-import { useToast } from "./ui/use-toast";
-import { useState } from "react";
 
 type Inputs = {
   name: string;
@@ -25,32 +26,36 @@ export default function ContactForm() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: (index: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 50,
+        damping: 10,
+        delay: index * 0.2,
+      },
+    }),
+  };
+
   async function sendEmail(
     name: string,
     subject: string,
     email: string,
     message: string
   ) {
-    emailjs.init({
-      publicKey: process.env.NEXT_PUBLIC_OPTIONS_KEY,
-    });
-
+    emailjs.init({ publicKey: process.env.NEXT_PUBLIC_OPTIONS_KEY });
     try {
       const response = await emailjs.send(
         process.env.NEXT_PUBLIC_SERVICE_ID!,
         process.env.NEXT_PUBLIC_TEMPLATE_ID!,
-        {
-          fullname: name,
-          subject: subject,
-          sender: email,
-          message: message,
-        },
+        { fullname: name, subject: subject, sender: email, message: message },
         process.env.NEXT_PUBLIC_OPTIONS_KEY
       );
-      if (response.status == 200) {
-        toast({
-          description: "Message Sent successfully",
-        });
+      if (response.status === 200) {
+        toast({ description: "Message Sent successfully" });
       } else {
         toast({
           variant: "destructive",
@@ -60,7 +65,7 @@ export default function ContactForm() {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast({
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
@@ -78,13 +83,25 @@ export default function ContactForm() {
   };
 
   return (
-    <section
+    <motion.section
       className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800"
       id="form"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      variants={{
+        visible: {
+          transition: { staggerChildren: 0.1 },
+        },
+      }}
     >
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-xl space-y-6">
-          <div className="space-y-2 text-center">
+          <motion.div
+            className="space-y-2 text-center"
+            variants={itemVariants}
+            custom={0}
+          >
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Get in Touch
             </h2>
@@ -92,10 +109,14 @@ export default function ContactForm() {
               Fill out the form below and we'll get back to you as soon as
               possible.
             </p>
-          </div>
+          </motion.div>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="space-y-1.5">
+              <motion.div
+                className="space-y-1.5"
+                variants={itemVariants}
+                custom={1}
+              >
                 <Label htmlFor="name">Full Name</Label>
                 <Input
                   id="name"
@@ -105,8 +126,12 @@ export default function ContactForm() {
                 {errors.name && (
                   <p className="text-red-500">This field is required</p>
                 )}
-              </div>
-              <div className="space-y-1.5">
+              </motion.div>
+              <motion.div
+                className="space-y-1.5"
+                variants={itemVariants}
+                custom={2}
+              >
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
@@ -117,9 +142,13 @@ export default function ContactForm() {
                 {errors.email && (
                   <p className="text-red-500">This field is required</p>
                 )}
-              </div>
+              </motion.div>
             </div>
-            <div className="space-y-1.5">
+            <motion.div
+              className="space-y-1.5"
+              variants={itemVariants}
+              custom={3}
+            >
               <Label htmlFor="subject">Subject</Label>
               <Input
                 id="subject"
@@ -129,8 +158,12 @@ export default function ContactForm() {
               {errors.subject && (
                 <p className="text-red-500">This field is required</p>
               )}
-            </div>
-            <div className="space-y-1.5">
+            </motion.div>
+            <motion.div
+              className="space-y-1.5"
+              variants={itemVariants}
+              custom={4}
+            >
               <Label htmlFor="message">Message</Label>
               <Textarea
                 className="min-h-[150px]"
@@ -141,13 +174,15 @@ export default function ContactForm() {
               {errors.message && (
                 <p className="text-red-500">This field is required</p>
               )}
-            </div>
-            <Button className="w-full" type="submit" disabled={loading}>
-              Submit
-            </Button>
+            </motion.div>
+            <motion.div variants={itemVariants} custom={5}>
+              <Button className="w-full" type="submit" disabled={loading}>
+                Submit
+              </Button>
+            </motion.div>
           </form>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

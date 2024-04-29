@@ -1,26 +1,59 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/yHCcQKXDaI5
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
+"use client";
+import { motion } from "framer-motion";
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
 
 export default function Recomendation() {
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: (index: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 50,
+        damping: 10,
+        delay: index * 0.2,
+      },
+    }),
+  };
+
   return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg my-20">
-      <div className="flex justify-center mb-4">
+    <motion.div
+      className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg my-20"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      variants={{
+        visible: {
+          transition: { staggerChildren: 0.1 },
+        },
+      }}
+    >
+      <motion.div
+        className="flex justify-center mb-4"
+        variants={itemVariants}
+        custom={0}
+      >
         <StarIcon className="h-5 w-5 text-yellow-400" />
         <StarIcon className="h-5 w-5 text-yellow-400" />
         <StarIcon className="h-5 w-5 text-yellow-400" />
         <StarIcon className="h-5 w-5 text-yellow-400" />
         <StarIcon className="h-5 w-5 text-yellow-400" />
-      </div>
-      <p className="text-gray-600 mb-4">
+      </motion.div>
+      <motion.p
+        className="text-gray-600 mb-4"
+        variants={itemVariants}
+        custom={1}
+      >
         BoostMedia helped me increase my online presence and reach a wider
         audience. Their strategies are effective and their team is highly
         knowledgeable.
-      </p>
-      <div className="flex items-center">
+      </motion.p>
+      <motion.div
+        className="flex items-center"
+        variants={itemVariants}
+        custom={2}
+      >
         <Avatar>
           <AvatarImage
             alt="John Doe"
@@ -33,8 +66,8 @@ export default function Recomendation() {
           <p className="text-sm text-gray-500">BoostMedia</p>
         </div>
         <DribbbleIcon className="h-6 w-6 ml-auto text-gray-800" />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

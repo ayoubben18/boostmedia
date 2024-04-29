@@ -54,6 +54,7 @@ export default function OurTeam() {
         >
           {teamMembers.map((member, index) => (
             <motion.div
+              key={index}
               className="pt-6"
               custom={index + 3}
               variants={itemVariants}
@@ -78,8 +79,10 @@ export default function OurTeam() {
                     {member.description}
                   </p>
                   <div className="flex gap-2 mt-2">
-                    {member.socialLinks.map((link) => (
-                      <link.Icon className="h-6 w-6 text-gray-400" />
+                    {member.socialLinks.map((link, index) => (
+                      <div key={index}>
+                        <link.Icon className="h-6 w-6 text-gray-400" />
+                      </div>
                     ))}
                   </div>
                 </div>

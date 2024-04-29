@@ -23,7 +23,7 @@ export default function Credentials() {
       className="max-w-4xl mx-auto py-12 px-6"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.4 }}
       variants={{
         visible: {
           transition: { staggerChildren: 0.1 },
@@ -57,9 +57,9 @@ export default function Credentials() {
               <p className="text-gray-600">Send us an email today!</p>
               <Link
                 className="text-yellow-400"
-                href="mailto:contact@boostmedia.ma"
+                href="mailto:boostmedia1.ma@gmail.com"
               >
-                contact@boostmedia.ma
+                boostmedia1.ma@gmail.com
               </Link>
             </div>
           </motion.div>

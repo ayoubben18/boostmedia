@@ -1,22 +1,42 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/nSzBdM1uahp
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
+"use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export default function Nav() {
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [navVisible, setNavVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < lastScrollY) {
+        setNavVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setNavVisible(false);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className="bg-white py-4 shadow-sm">
+    <div
+      className={`sticky bg-white py-4 shadow-sm top-0 py-4 justify-between bg-white z-50 transition-transform duration-300 ${
+        navVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center space-x-8">
           <Link href={"/"}>
             <Image
               src={"/logo.png"}
-              width={50}
-              height={50}
+              width={60}
+              height={60}
               priority
               alt="logo"
             />
@@ -39,31 +59,12 @@ export default function Nav() {
         <div className="flex items-center space-x-2">
           <Button variant="outline">
             <Link href={"#form"}>Contact Us</Link>
-          </Button>{" "}
+          </Button>
           <Button>
             <Link href={"#services"}>Services</Link>
           </Button>
         </div>
       </div>
-    </header>
-  );
-}
-
-function ChevronDownIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
+    </div>
   );
 }

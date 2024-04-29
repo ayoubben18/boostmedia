@@ -18,11 +18,11 @@ export default function Home() {
       <div className=" w-full  bg-gray-100">
         <BentoBox />
       </div>
-      <OurTeam />
+      <Recomendation />
       <div className="bg-gray-100 w-full">
-        <Recomendation />
+        <Credentials />
       </div>
-      <Credentials />
+
       <ContactForm />
     </main>
   );

@@ -23,7 +23,7 @@ export default function BentoBox() {
       id="innovation"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.4 }}
       variants={{
         visible: {
           transition: { staggerChildren: 0.1 },

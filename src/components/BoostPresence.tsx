@@ -24,7 +24,7 @@ export default function BoostPresence() {
       id="services"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.6 }}
+      viewport={{ once: true, amount: 0.3 }}
       variants={{
         visible: {
           transition: { staggerChildren: 0.1 },

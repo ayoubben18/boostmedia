@@ -84,11 +84,11 @@ export default function ContactForm() {
 
   return (
     <motion.section
-      className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800"
+      className="w-full py-12 md:py-24 lg:py-32 dark:bg-gray-800"
       id="form"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.4 }}
       variants={{
         visible: {
           transition: { staggerChildren: 0.1 },
@@ -132,11 +132,10 @@ export default function ContactForm() {
                 variants={itemVariants}
                 custom={2}
               >
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Phone Number / Email</Label>
                 <Input
                   id="email"
-                  placeholder="Enter your email"
-                  type="email"
+                  placeholder="Enter your email or phone number"
                   {...register("email", { required: true })}
                 />
                 {errors.email && (
@@ -144,37 +143,7 @@ export default function ContactForm() {
                 )}
               </motion.div>
             </div>
-            <motion.div
-              className="space-y-1.5"
-              variants={itemVariants}
-              custom={3}
-            >
-              <Label htmlFor="subject">Subject</Label>
-              <Input
-                id="subject"
-                placeholder="Enter the subject"
-                {...register("subject", { required: true })}
-              />
-              {errors.subject && (
-                <p className="text-red-500">This field is required</p>
-              )}
-            </motion.div>
-            <motion.div
-              className="space-y-1.5"
-              variants={itemVariants}
-              custom={4}
-            >
-              <Label htmlFor="message">Message</Label>
-              <Textarea
-                className="min-h-[150px]"
-                id="message"
-                placeholder="Enter your message"
-                {...register("message", { required: true })}
-              />
-              {errors.message && (
-                <p className="text-red-500">This field is required</p>
-              )}
-            </motion.div>
+
             <motion.div variants={itemVariants} custom={5}>
               <Button className="w-full" type="submit" disabled={loading}>
                 Submit

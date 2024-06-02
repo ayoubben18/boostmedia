@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
   const itemVariants = {
@@ -52,8 +53,12 @@ export default function HeroSection() {
             custom={3}
             variants={itemVariants}
           >
-            <Button>Learn More</Button>
-            <Button variant="outline">Sign Up</Button>
+            <Button>
+              <Link href={"#services"}>Learn More</Link>
+            </Button>
+            <Button variant="outline">
+              <Link href={"#form"}>Sign Up</Link>
+            </Button>
           </motion.div>
         </motion.div>
         <motion.div

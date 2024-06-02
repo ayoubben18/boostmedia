@@ -62,8 +62,8 @@ export default function Recomendation() {
           <AvatarFallback>AB</AvatarFallback>
         </Avatar>
         <div className="ml-2">
-          <p className="text-sm font-semibold">Ayoub Bensalah</p>
-          <p className="text-sm text-gray-500">BoostMedia</p>
+          <p className="text-sm font-semibold">Hassan Dekaki</p>
+          <p className="text-sm text-gray-500">Business owner</p>
         </div>
         <DribbbleIcon className="h-6 w-6 ml-auto text-gray-800" />
       </motion.div>

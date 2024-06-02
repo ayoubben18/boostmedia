@@ -22,7 +22,6 @@ export default function Home() {
       <div className="bg-gray-100 w-full">
         <Credentials />
       </div>
-
       <ContactForm />
     </main>
   );

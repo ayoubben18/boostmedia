@@ -82,7 +82,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-200 py-6 mt-10 text-center text-xs text-gray-600">
-          <p>© 2024 Relume. All rights reserved.</p>
+          <p>© 2024 BoostMedia. All rights reserved.</p>
           <div className="flex justify-center space-x-4 mt-4">
             <Link className="text-gray-600" href="#">
               Privacy Policy

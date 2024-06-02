@@ -40,18 +40,13 @@ export default function ContactForm() {
     }),
   };
 
-  async function sendEmail(
-    name: string,
-    subject: string,
-    email: string,
-    message: string
-  ) {
+  async function sendEmail(name: string, email: string) {
     emailjs.init({ publicKey: process.env.NEXT_PUBLIC_OPTIONS_KEY });
     try {
       const response = await emailjs.send(
         process.env.NEXT_PUBLIC_SERVICE_ID!,
         process.env.NEXT_PUBLIC_TEMPLATE_ID!,
-        { fullname: name, subject: subject, sender: email, message: message },
+        { fullname: name, sender: email },
         process.env.NEXT_PUBLIC_OPTIONS_KEY
       );
       if (response.status === 200) {
@@ -77,7 +72,7 @@ export default function ContactForm() {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setLoading(true);
-    await sendEmail(data.name, data.subject, data.email, data.message);
+    await sendEmail(data.name, data.email);
     reset();
     setLoading(false);
   };

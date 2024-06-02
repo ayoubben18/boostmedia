@@ -56,10 +56,10 @@ export default function Credentials() {
               <h2 className="text-xl font-semibold">Email</h2>
               <p className="text-gray-600">Send us an email today!</p>
               <Link
-                className="text-yellow-400"
+                className="text-gray-500"
                 href="mailto:boostmedia1.ma@gmail.com"
               >
-                boostmedia1.ma@gmail.com
+                contact@boostmedia1.ma
               </Link>
             </div>
           </motion.div>
@@ -72,8 +72,8 @@ export default function Credentials() {
             <div>
               <h2 className="text-xl font-semibold">Phone</h2>
               <p className="text-gray-600">Give us a call now!</p>
-              <Link className="text-yellow-400" href="tel:0625950284">
-                0625950284
+              <Link className="text-gray-500" href="tel:0625950284">
+                +212 658-581045
               </Link>
             </div>
           </motion.div>
@@ -86,7 +86,7 @@ export default function Credentials() {
             <div>
               <h2 className="text-xl font-semibold">Office</h2>
               <p className="text-gray-600">Fes, Morocco</p>
-              <Link className="text-yellow-400" href="#">
+              <Link className="text-gray-500" href="#">
                 Get Directions
               </Link>
             </div>

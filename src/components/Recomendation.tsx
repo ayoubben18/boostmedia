@@ -59,7 +59,7 @@ export default function Recomendation() {
             alt="John Doe"
             src="/placeholder.svg?height=32&width=32"
           />
-          <AvatarFallback>AB</AvatarFallback>
+          <AvatarFallback>HD</AvatarFallback>
         </Avatar>
         <div className="ml-2">
           <p className="text-sm font-semibold">Hassan Dekaki</p>

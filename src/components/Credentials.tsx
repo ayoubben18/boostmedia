@@ -73,7 +73,7 @@ export default function Credentials() {
               <h2 className="text-xl font-semibold">Phone</h2>
               <p className="text-gray-600">Give us a call now!</p>
               <Link className="text-gray-500" href="tel:0625950284">
-                +212 658-581045
+                +212 669-564558
               </Link>
             </div>
           </motion.div>
